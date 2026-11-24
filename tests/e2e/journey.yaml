@@ -1,0 +1,32 @@
+appId: ua.borlock.autotap.newkey
+---
+# Disposable emulator only; run via tests/e2e/run.sh.
+- launchApp:
+    clearState: true
+- scrollUntilVisible:
+    element:
+      text: 'Set timers.*|Налаштувати таймери.*|Nastavit časovače.*'
+    direction: DOWN
+- tapOn: 'Set timers.*|Налаштувати таймери.*|Nastavit časovače.*'
+- tapOn: '.*(Add timer|Додати таймер|Přidat časovač)'
+- tapOn: 'Timer name|Назва таймера|Název časovače'
+- inputText: 'E2E reminder'
+- hideKeyboard
+- tapOn: 'Save|SAVE|Зберегти|ЗБЕРЕГТИ|Uložit|ULOŽIT'
+- scrollUntilVisible:
+    element:
+      text: 'E2E reminder'
+    direction: DOWN
+- assertVisible: 'E2E reminder'
+- stopApp
+- launchApp
+- scrollUntilVisible:
+    element:
+      text: 'Set timers.*|Налаштувати таймери.*|Nastavit časovače.*'
+    direction: DOWN
+- tapOn: 'Set timers.*|Налаштувати таймери.*|Nastavit časovače.*'
+- scrollUntilVisible:
+    element:
+      text: 'E2E reminder'
+    direction: DOWN
+- assertVisible: 'E2E reminder'
